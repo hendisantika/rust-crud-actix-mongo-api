@@ -1,4 +1,5 @@
 use log::info;
+use mongodb::Database;
 use mongodb::options::{ClientOptions, Credential};
 use mongodb::sync::Client;
 
@@ -44,5 +45,10 @@ impl Environment {
             db_pool,
             config,
         }
+    }
+
+    pub fn db(&self) -> Database {
+        let db = self.db_pool.clone().database(&self.config.db_name);
+        return db;
     }
 }
