@@ -8,3 +8,5 @@ use crate::security::get_hashed_password;
 pub struct UserService {
     collection: Collection<Document>,
 }
+
+impl UserService {}
