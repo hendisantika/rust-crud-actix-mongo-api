@@ -15,3 +15,10 @@ pub struct AuthResponse {
     pub roles: Vec<Role>,
     pub tokens: Tokens,
 }
+
+#[derive(Deserialize, Serialize, Debug)]
+pub struct Claims {
+    pub sub: String,
+    pub role: String,
+    pub exp: usize,
+}
