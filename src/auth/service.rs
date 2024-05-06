@@ -31,4 +31,17 @@ impl AuthService {
 
         self.generate_tokens_and_update(existing)
     }
+
+    /**
+    Used by jwt_middleware to check if token has not been revoked
+     */
+    pub fn validate(&self, token: &str) -> Result<User, GenericError> {
+        // todo!("Get session from faster store such as redis");
+        let filter = doc! { "tokens.access_token": &token };
+        let user: User = match self.collection.find_one(filter, None).unwrap() {
+            Some(obj) => from_document(obj).unwrap(),
+            None => return Err(GenericError { message: "Not found" }),
+        };
+        Ok(user)
+    }
 }
