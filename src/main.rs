@@ -1,8 +1,15 @@
+use crate::auth::service::AuthService;
+use crate::users::service::UserService;
+
 mod environment;
-mod users;
 mod errors;
 mod auth;
+mod users;
+mod security;
 
-fn main() {
-    println!("Hello, world!");
+mod test_controller;
+
+pub struct AppState {
+    auth_service: AuthService,
+    user_service: UserService,
 }
