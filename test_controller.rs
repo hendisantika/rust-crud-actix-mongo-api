@@ -8,3 +8,9 @@ use crate::users::models::User;
 pub async fn public(current_user: User) -> impl Responder {
     HttpResponse::Ok().body(json!({ "username": &current_user.username, "endpoint_security": "PUBLIC" }).to_string())
 }
+
+#[get("/api/protected/user")]
+#[has_any_permission("ROLE_USER", "ROLE_ADMIN")]
+pub async fn protected_user(current_user: User) -> impl Responder {
+    HttpResponse::Ok().body(json!({ "username": &current_user.username, "endpoint_security": "ANY ROLE" }).to_string())
+}
