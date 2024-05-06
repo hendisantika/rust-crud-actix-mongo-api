@@ -18,3 +18,6 @@ pub struct User {
     pub created_at: Option<DateTime<Utc>>,
     pub updated_at: Option<DateTime<Utc>>,
 }
+
+// Retrieves user object from session previously set by the jwt middleware to be available for injection on controllers
+impl FromRequest for User {}
