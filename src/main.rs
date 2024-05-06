@@ -1,3 +1,5 @@
+use std::io::Result;
+
 use actix_web::{App, HttpServer};
 use actix_web::web::Data;
 use actix_web_grants::GrantsMiddleware;
@@ -13,7 +15,6 @@ mod users;
 mod security;
 
 mod test_controller;
-mod security;
 
 pub struct AppState {
     auth_service: AuthService,

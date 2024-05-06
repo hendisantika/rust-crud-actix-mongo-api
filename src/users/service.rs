@@ -1,7 +1,8 @@
 use bson::{Document, from_document, to_document};
 use chrono::Utc;
-use mongodb::results::InsertOneResult;
-use mongodb::sync::Collection;
+// use mongodb::results::InsertOneResult;
+// use mongodb::sync::Collection;
+use mongodb::{error::Error, results::InsertOneResult, sync::Collection};
 
 use crate::environment::Environment;
 use crate::errors::GenericError;
