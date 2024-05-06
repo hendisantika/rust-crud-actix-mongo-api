@@ -20,4 +20,27 @@ pub struct User {
 }
 
 // Retrieves user object from session previously set by the jwt middleware to be available for injection on controllers
-impl FromRequest for User {}
+impl FromRequest for User {
+    type Error = actix_web::Error;
+    type Future = std::future::Ready<Result<User, Self::Error>>;
+
+    fn from_request(req: &HttpRequest, _payload: &mut Payload) -> Self::Future {
+        let default_user = User {
+            id: None,
+            email: "".to_string(),
+            username: "".to_string(),
+            password: "".to_string(),
+            roles: vec![],
+            tokens: None,
+            created_at: None,
+            updated_at: None,
+        };
+
+        let user: User = match req.extensions_mut().get::<User>() {
+            Some(data) => data.to_owned(),
+            None => default_user.clone()
+        };
+
+        return std::future::ready(Ok(user));
+    }
+}
