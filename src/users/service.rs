@@ -9,4 +9,9 @@ pub struct UserService {
     collection: Collection<Document>,
 }
 
-impl UserService {}
+impl UserService {
+    pub fn new(env: Environment) -> UserService {
+        let collection: Collection<Document> = env.db().collection("users");
+        UserService { collection }
+    }
+}
