@@ -94,3 +94,7 @@ pub fn get_hashed_password(password: &str) -> String {
     let password_hash = hash(password, COST).unwrap().to_string();
     password_hash
 }
+
+pub fn verify_password(password: &str, password_hash: &str) -> bool {
+    bcrypt::verify(password, password_hash).is_ok()
+}
