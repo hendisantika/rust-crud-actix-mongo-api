@@ -14,3 +14,9 @@ pub async fn public(current_user: User) -> impl Responder {
 pub async fn protected_user(current_user: User) -> impl Responder {
     HttpResponse::Ok().body(json!({ "username": &current_user.username, "endpoint_security": "ANY ROLE" }).to_string())
 }
+
+#[get("/api/protected/admin")]
+#[has_any_permission("ROLE_ADMIN")]
+pub async fn protected_admin(current_user: User) -> impl Responder {
+    HttpResponse::Ok().body(json!({ "username": &current_user.username, "endpoint_security": "ROLE_ADMIN" }).to_string())
+}
