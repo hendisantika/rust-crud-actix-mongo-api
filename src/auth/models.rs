@@ -22,3 +22,8 @@ pub struct Claims {
     pub role: String,
     pub exp: usize,
 }
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct TokenRefreshRequest {
+    pub refresh_token: String,
+}
