@@ -44,4 +44,17 @@ impl AuthService {
         };
         Ok(user)
     }
+
+    /**
+    Generates new tokens if the given refresh_token is valid
+     */
+    pub fn refresh(&self, token: &str) -> Result<AuthResponse, GenericError> {
+        // todo!("Get session from faster store such as redis");
+        let filter = doc! { "tokens.refresh_token": &token };
+        let user: User = match self.collection.find_one(filter, None).unwrap() {
+            Some(obj) => from_document(obj).unwrap(),
+            None => return Err(GenericError { message: "Not found" }),
+        };
+        self.generate_tokens_and_update(user)
+    }
 }
