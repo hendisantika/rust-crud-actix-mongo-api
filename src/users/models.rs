@@ -67,3 +67,9 @@ pub struct CreateUser {
     pub password: String,
     pub roles: Vec<Role>,
 }
+
+#[derive(Clone, PartialEq, Serialize, Deserialize, Debug)]
+pub enum Role {
+    User,
+    Admin,
+}
