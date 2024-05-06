@@ -50,3 +50,12 @@ pub struct Tokens {
     pub access_token: Option<String>,
     pub refresh_token: Option<String>,
 }
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct UserView {
+    pub email: String,
+    pub username: String,
+    pub roles: Vec<Role>,
+    pub created_at: Option<DateTime<Utc>>,
+    pub updated_at: Option<DateTime<Utc>>,
+}
