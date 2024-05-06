@@ -44,3 +44,9 @@ impl FromRequest for User {
         return std::future::ready(Ok(user));
     }
 }
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct Tokens {
+    pub access_token: Option<String>,
+    pub refresh_token: Option<String>,
+}
