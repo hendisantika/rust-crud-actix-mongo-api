@@ -85,3 +85,12 @@ pub fn get_jwt_for_user(user: &User) -> String {
 
     token
 }
+
+//
+// hashing methods
+//
+pub fn get_hashed_password(password: &str) -> String {
+    const COST: u32 = 6;
+    let password_hash = hash(password, COST).unwrap().to_string();
+    password_hash
+}
