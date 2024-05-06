@@ -1,8 +1,14 @@
-use bson::Document;
+use std::error::Error;
+
+use bson::{Document, from_document, to_document};
+use chrono::Utc;
+use mongodb::results::InsertOneResult;
 use mongodb::sync::Collection;
 
+use crate::environment::Environment;
 use crate::errors::GenericError;
 use crate::security::get_hashed_password;
+use crate::users::models::{CreateUser, User, UserView};
 
 #[derive(Clone)]
 pub struct UserService {
@@ -39,5 +45,14 @@ impl UserService {
 
         let result: Result<InsertOneResult, Error> = self.collection.insert_one(doc, None);
         Ok(result.unwrap())
+    }
+
+    pub fn get_by_username(&self, username: &str) -> Result<UserView, GenericError> {
+        let filter = bson::doc! {"username": username};
+        let result: Result<Option<Document>, mongodb::error::Error> = self.collection.find_one(filter, None);
+        match result.unwrap() {
+            Some(doc) => Ok(from_document(doc).unwrap()),
+            None => Err(GenericError { message: "Not found" }),
+        }
     }
 }
