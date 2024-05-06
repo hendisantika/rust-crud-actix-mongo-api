@@ -55,3 +55,33 @@ pub async fn jwt_middleware(req: &ServiceRequest) -> Result<Vec<String>, actix_w
         }
     }
 }
+
+/**
+Generates token for user
+ */
+pub fn get_jwt_for_user(user: &User) -> String {
+    let expiration_time = Utc::now()
+        .checked_add_signed(Duration::hours(8))
+        .expect("invalid timestamp")
+        .timestamp();
+
+    let roles_str: Vec<String> = user.roles.iter().map(|r| r.to_string()).collect();
+    let role_str = roles_str.join(",").to_string();
+
+    let user_claims = Claims {
+        sub: user.username.clone(),
+        role: role_str,
+        exp: expiration_time as usize,
+    };
+
+    let token = match jsonwebtoken::encode(
+        &jsonwebtoken::Header::default(),
+        &user_claims,
+        &jsonwebtoken::EncodingKey::from_secret(&get_secret()),
+    ) {
+        Ok(t) => t,
+        Err(_) => panic!(),
+    };
+
+    token
+}
