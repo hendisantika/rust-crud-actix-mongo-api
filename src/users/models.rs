@@ -59,3 +59,11 @@ pub struct UserView {
     pub created_at: Option<DateTime<Utc>>,
     pub updated_at: Option<DateTime<Utc>>,
 }
+
+#[derive(Debug, Deserialize, Clone)]
+pub struct CreateUser {
+    pub email: String,
+    pub username: String,
+    pub password: String,
+    pub roles: Vec<Role>,
+}
