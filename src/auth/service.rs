@@ -1,11 +1,12 @@
 use bson::{doc, Document, from_document};
+use chrono::Utc;
 use mongodb::sync::Collection;
 
 use crate::auth::models::{AuthRequest, AuthResponse};
 use crate::environment::Environment;
 use crate::errors::GenericError;
 use crate::security::{get_jwt_for_user, verify_password};
-use crate::users::models::User;
+use crate::users::models::{Tokens, User};
 
 #[derive(Clone)]
 pub struct AuthService {

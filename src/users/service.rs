@@ -1,5 +1,3 @@
-use std::error::Error;
-
 use bson::{Document, from_document, to_document};
 use chrono::Utc;
 use mongodb::results::InsertOneResult;

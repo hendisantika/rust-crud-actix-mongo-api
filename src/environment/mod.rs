@@ -1,7 +1,6 @@
 use log::info;
-use mongodb::Database;
-use mongodb::options::{ClientOptions, Credential};
-use mongodb::sync::Client;
+use mongodb::{options::ClientOptions, sync::Client, sync::Database};
+use mongodb::options::Credential;
 
 #[derive(Clone)]
 pub struct Environment {
