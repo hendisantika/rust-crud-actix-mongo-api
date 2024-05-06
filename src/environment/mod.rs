@@ -12,3 +12,5 @@ pub struct Config {
     pub host: String,
     // ... other properties to be used throughout the app
 }
+
+impl Environment {}
