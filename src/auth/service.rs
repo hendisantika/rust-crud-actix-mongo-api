@@ -7,3 +7,5 @@ use crate::security::{get_jwt_for_user, verify_password};
 pub struct AuthService {
     collection: Collection<Document>,
 }
+
+impl AuthService {}
