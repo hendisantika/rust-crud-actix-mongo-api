@@ -51,4 +51,6 @@ impl Environment {
         let db = self.db_pool.clone().database(&self.config.db_name);
         return db;
     }
+
+    pub fn config(&self) -> &Config { &self.config }
 }
