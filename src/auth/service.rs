@@ -57,4 +57,29 @@ impl AuthService {
         };
         self.generate_tokens_and_update(user)
     }
+
+    pub fn generate_tokens_and_update(&self, mut user: User) -> Result<AuthResponse, GenericError> {
+        // Generate tokens and save them
+        let access_token = get_jwt_for_user(&user);
+        // todo!("Improve refresh token")
+        let refresh_token = get_jwt_for_user(&user);
+        user.tokens = Some(Tokens {
+            access_token: Some(access_token),
+            refresh_token: Some(refresh_token),
+        });
+        user.updated_at = Some(Utc::now());
+
+        let filter = doc! { "_id": user.id };
+        let updates = doc! { "$set": bson::to_document(&user).unwrap() };
+        self.collection.update_one(filter, updates, None).unwrap();
+
+        // Create response object
+        let result = AuthResponse {
+            email: user.email.to_string(),
+            username: user.username.to_string(),
+            roles: user.roles,
+            tokens: user.tokens.unwrap(),
+        };
+        Ok(result)
+    }
 }
