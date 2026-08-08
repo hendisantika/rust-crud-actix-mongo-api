@@ -10,7 +10,7 @@ actix = "0.13.0"
 actix-rt = "2.8.0"
 actix-web = "4.3.1"
 actix-web-grants = "4.1.0"
-mongodb = { version = "2.1.0", default-features = false, features = ["sync"] }
+mongodb = { version = "3.8.0", default-features = false, features = ["sync"] }
 bson = "2.1.0"
 dotenv = "0.15.0"
 log4rs = "1.2.0"
