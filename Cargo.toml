@@ -17,7 +17,7 @@ log4rs = "1.2.0"
 log = "0.4.17"
 bcrypt = "0.15.1"
 chrono = { version = "0.4.23", features = ["serde"] }
-jsonwebtoken = "9.3.0"
+jsonwebtoken = "10.3.0"
 derive_more = "0.99.17"
 serde = "1.0.136"
 serde_json = "1.0.93"
