@@ -158,9 +158,9 @@ dependencies = [
 
 [[package]]
 name = "actix-web"
-version = "4.17.0"
+version = "4.18.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "67756b0fc99e07b8702b9a856e3d6ec036387243c2ce6310070d1e8f02680bb0"
+checksum = "81f8da0d2ae4200dde8773d72ba47a65c220b251ba7b9248db5bd263c247e959"
 dependencies = [
  "actix-codec",
  "actix-http",
@@ -202,9 +202,9 @@ dependencies = [
 
 [[package]]
 name = "actix-web-codegen"
-version = "4.4.0"
+version = "4.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b96b09c4878563f8ab4a5fd0c59f9f0d6e0e9f60eb9b748526a0b9604fd89c50"
+checksum = "f7c9f4c52b954a73c76757a3952d3437fca00a2fbcb49704f8a6ea9f767e73f0"
 dependencies = [
  "actix-router",
  "proc-macro2",
@@ -1238,9 +1238,9 @@ dependencies = [
 
 [[package]]
 name = "log"
-version = "0.4.34"
+version = "0.4.35"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f9f8bd3e56ce4dfc153cf470fffbfa98c7620958b312ca5c3a4b8d5181fd13c6"
+checksum = "5d15f86d12da44cd8d4ec3c73984537eb7f4cadcb9776a575a0a8a05ca11005c"
 dependencies = [
  "serde_core",
 ]
@@ -1379,14 +1379,13 @@ checksum = "9bb517913cfcfb9eeda59f36020269075a152701a01606c612f547e4890be399"
 
 [[package]]
 name = "mongodb"
-version = "3.9.1"
+version = "3.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "af84443ae9878f59a6818686f339064479f42cdf293c4c637d8fc9c0a8c5eed6"
+checksum = "6466d4601ff396952e1895d88083d1ab03930b812277180eb8258bbe1a10bb0f"
 dependencies = [
  "base64 0.22.1",
  "bitflags",
  "derive-where",
- "derive_more",
  "futures-core",
  "futures-io",
  "futures-util",
@@ -1417,9 +1416,9 @@ dependencies = [
 
 [[package]]
 name = "mongodb-internal-macros"
-version = "3.9.1"
+version = "3.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "504024bbb83ab1bf1512007f7288b54d3a6343043f3f619c26a153346773598d"
+checksum = "995f1171fab2a793f15afd0e9ba1d84116a9411ff8e3467fe9c167462435033d"
 dependencies = [
  "macro_magic",
  "proc-macro2",
